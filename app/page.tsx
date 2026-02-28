@@ -36,11 +36,14 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-          <div className="text-center p-8 max-w-md">
-            <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
-            <p className="text-muted-foreground mb-4 text-sm">{this.state.error}</p>
-            <button onClick={() => this.setState({ hasError: false, error: '' })} className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[hsl(220,20%,97%)] via-[hsl(230,25%,95%)] to-[hsl(245,30%,94%)] text-foreground">
+          <div className="text-center p-10 max-w-md">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center mx-auto mb-5 shadow-sm">
+              <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.07 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
+            </div>
+            <h2 className="text-xl font-bold tracking-tight mb-2">Something went wrong</h2>
+            <p className="text-muted-foreground mb-6 text-sm leading-relaxed">{this.state.error}</p>
+            <button onClick={() => this.setState({ hasError: false, error: '' })} className="px-6 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 text-white rounded-xl text-sm font-medium shadow-md shadow-indigo-500/20 hover:from-indigo-600 hover:to-violet-700 transition-all duration-200">
               Try again
             </button>
           </div>
@@ -451,7 +454,7 @@ export default function Page() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100/50 to-blue-50/30 text-foreground">
+      <div className="min-h-screen bg-gradient-to-br from-[hsl(220,20%,97%)] via-[hsl(230,25%,95%)] to-[hsl(245,30%,94%)] text-foreground">
         {/* Sidebar */}
         <Sidebar
           activeScreen={activeScreen}
@@ -460,11 +463,11 @@ export default function Page() {
         />
 
         {/* Main content */}
-        <main className="md:ml-64 min-h-screen">
+        <main className="md:ml-72 min-h-screen">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             {/* Top bar with sample toggle */}
             <div className="flex items-center justify-end mb-6 gap-3">
-              <Label htmlFor="sample-toggle" className="text-xs text-muted-foreground font-medium cursor-pointer">Sample Data</Label>
+              <Label htmlFor="sample-toggle" className="text-xs text-muted-foreground font-medium cursor-pointer select-none">Sample Data</Label>
               <Switch
                 id="sample-toggle"
                 checked={sampleMode}
@@ -476,32 +479,36 @@ export default function Page() {
             {renderScreen()}
 
             {/* Agent Status */}
-            <div className="mt-8 pt-6 border-t border-border/50">
-              <div className="flex items-center gap-2 mb-3">
-                <FiCpu className="w-3.5 h-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">AI Agents</p>
+            <div className="mt-10 pt-6 border-t border-border/40">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center">
+                  <FiCpu className="w-3 h-3 text-indigo-600" />
+                </div>
+                <p className="text-[11px] font-semibold text-indigo-600/70 uppercase tracking-widest">AI Agents</p>
               </div>
               <div className="flex flex-wrap gap-3">
                 {agents.map((agent) => (
                   <div
                     key={agent.id}
                     className={cn(
-                      'flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs backdrop-blur-md border transition-all duration-200',
+                      'flex items-center gap-3 px-4 py-3 rounded-xl text-xs border transition-all duration-300',
                       activeAgentId === agent.id
-                        ? 'bg-primary/10 border-primary/30 shadow-sm'
-                        : 'bg-white/50 border-white/20'
+                        ? 'bg-gradient-to-r from-indigo-50 to-violet-50 border-indigo-200/60 shadow-md shadow-indigo-500/10'
+                        : 'bg-card/80 border-border/50 hover:border-indigo-200/40 hover:shadow-sm'
                     )}
                   >
                     <div className={cn(
-                      'w-2 h-2 rounded-full flex-shrink-0',
-                      activeAgentId === agent.id ? 'bg-green-500 animate-pulse' : 'bg-muted-foreground/30'
+                      'w-2.5 h-2.5 rounded-full flex-shrink-0 transition-all',
+                      activeAgentId === agent.id
+                        ? 'bg-emerald-500 shadow-sm shadow-emerald-500/40 animate-pulse'
+                        : 'bg-muted-foreground/20'
                     )} />
                     <div>
-                      <span className="font-medium text-foreground">{agent.name}</span>
-                      <span className="text-muted-foreground ml-1.5">{agent.purpose}</span>
+                      <span className="font-semibold text-foreground">{agent.name}</span>
+                      <span className="text-muted-foreground ml-2">{agent.purpose}</span>
                     </div>
                     {activeAgentId === agent.id && (
-                      <Badge variant="secondary" className="rounded-full text-[10px] px-1.5 py-0 ml-1 animate-pulse">
+                      <Badge className="rounded-full text-[10px] px-2 py-0.5 ml-1 bg-indigo-100 text-indigo-700 border border-indigo-200/60 font-semibold animate-pulse">
                         Active
                       </Badge>
                     )}
