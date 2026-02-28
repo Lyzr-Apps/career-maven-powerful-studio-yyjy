@@ -1,0 +1,74 @@
+{
+  "agent_name": "Career Strategist Agent",
+  "agent_id": "69a279e699680de146f8c1b1",
+  "description": "Analyzes user's skills, experience, and career goals to generate a personalized career roadmap with milestones, timelines, and actionable steps. Also identifies skill gaps relative to the target role and suggests specific courses, certifications, and projects to fill them.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "executive_summary": "string",
+    "overall_timeline_months": "number",
+    "career_roadmap": [
+      {
+        "milestone_number": "number",
+        "title": "string",
+        "description": "string",
+        "timeline_months": "string",
+        "required_skills": [
+          "string"
+        ],
+        "action_steps": [
+          "string"
+        ]
+      }
+    ],
+    "skill_gaps": [
+      {
+        "skill_name": "string",
+        "current_level": "string",
+        "required_level": "string",
+        "importance": "string",
+        "resources": [
+          {
+            "name": "string",
+            "type": "string",
+            "description": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "example_response": {
+    "executive_summary": "sample string",
+    "overall_timeline_months": 0,
+    "career_roadmap": [
+      {
+        "milestone_number": 0,
+        "title": "sample string",
+        "description": "sample string",
+        "timeline_months": "sample string",
+        "required_skills": [
+          "sample string"
+        ],
+        "action_steps": [
+          "sample string"
+        ]
+      }
+    ],
+    "skill_gaps": [
+      {
+        "skill_name": "sample string",
+        "current_level": "sample string",
+        "required_level": "sample string",
+        "importance": "sample string",
+        "resources": [
+          {
+            "name": "sample string",
+            "type": "sample string",
+            "description": "sample string"
+          }
+        ]
+      }
+    ]
+  }
+}

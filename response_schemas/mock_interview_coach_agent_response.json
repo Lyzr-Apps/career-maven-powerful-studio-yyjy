@@ -1,0 +1,64 @@
+{
+  "agent_name": "Mock Interview Coach Agent",
+  "agent_id": "69a279e6ad98307a3fb27904",
+  "description": "Conducts interactive multi-turn mock interviews tailored to the user's target industry and role. Asks industry-specific technical questions and behavioral questions with progressive difficulty. Provides real-time feedback after each answer, offers interview anxiety coaching, and delivers a comprehensive performance summary at session end.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "message_type": "string",
+    "question": "string",
+    "question_number": "number",
+    "question_category": "string",
+    "difficulty_level": "string",
+    "feedback": {
+      "score": "number",
+      "strengths": "string",
+      "improvements": "string",
+      "tip": "string"
+    },
+    "anxiety_tip": "string",
+    "performance_summary": {
+      "overall_score": "number",
+      "total_questions": "number",
+      "strengths": [
+        "string"
+      ],
+      "improvement_areas": [
+        "string"
+      ],
+      "tips": [
+        "string"
+      ],
+      "confidence_assessment": "string"
+    }
+  },
+  "example_response": {
+    "message_type": "sample string",
+    "question": "sample string",
+    "question_number": 0,
+    "question_category": "sample string",
+    "difficulty_level": "sample string",
+    "feedback": {
+      "score": 0,
+      "strengths": "sample string",
+      "improvements": "sample string",
+      "tip": "sample string"
+    },
+    "anxiety_tip": "sample string",
+    "performance_summary": {
+      "overall_score": 0,
+      "total_questions": 0,
+      "strengths": [
+        "sample string"
+      ],
+      "improvement_areas": [
+        "sample string"
+      ],
+      "tips": [
+        "sample string"
+      ],
+      "confidence_assessment": "sample string"
+    }
+  }
+}

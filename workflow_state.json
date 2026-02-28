@@ -1,0 +1,32 @@
+{
+  "app_name": "CareerPath AI",
+  "created_at": "2026-02-28",
+  "agents": {
+    "career_strategist": {
+      "agent_id": "69a279e699680de146f8c1b1",
+      "name": "Career Strategist Agent",
+      "node_id": "career_strategist",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "temperature": 0.5,
+      "top_p": 0.95,
+      "agent_type": "json",
+      "response_schema_file": "response_schemas/career_strategist_agent_response.json"
+    },
+    "mock_interview_coach": {
+      "agent_id": "69a279e6ad98307a3fb27904",
+      "name": "Mock Interview Coach Agent",
+      "node_id": "mock_interview_coach",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "agent_type": "json",
+      "response_schema_file": "response_schemas/mock_interview_coach_agent_response.json"
+    }
+  },
+  "agent_ids": [
+    "69a279e699680de146f8c1b1",
+    "69a279e6ad98307a3fb27904"
+  ]
+}

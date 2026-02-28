@@ -1,0 +1,82 @@
+{
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "User Profile & Goals",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "career_strategist",
+        "type": "Agent",
+        "label": "Career Strategist Agent",
+        "nodeCategory": "agent"
+      },
+      {
+        "id": "mock_interview_coach",
+        "type": "Agent",
+        "label": "Mock Interview Coach Agent",
+        "nodeCategory": "agent"
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Results Output",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "input_node",
+        "target": "career_strategist"
+      },
+      {
+        "source": "career_strategist",
+        "target": "mock_interview_coach"
+      },
+      {
+        "source": "mock_interview_coach",
+        "target": "output_node"
+      }
+    ]
+  },
+  "agents": [
+    {
+      "node_id": "career_strategist",
+      "agent_id": "69a279e699680de146f8c1b1",
+      "name": "Career Strategist Agent",
+      "description": "Analyzes user's skills, experience, and career goals to generate a personalized career roadmap with milestones, timelines, and actionable steps. Also identifies skill gaps relative to the target role and suggests specific courses, certifications, and projects to fill them.",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "temperature": 0.5,
+      "top_p": 0.95,
+      "agent_type": "json",
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "tools": false,
+        "knowledge_base": false
+      }
+    },
+    {
+      "node_id": "mock_interview_coach",
+      "agent_id": "69a279e6ad98307a3fb27904",
+      "name": "Mock Interview Coach Agent",
+      "description": "Conducts interactive multi-turn mock interviews tailored to the user's target industry and role. Asks industry-specific technical questions and behavioral questions with progressive difficulty. Provides real-time feedback after each answer, offers interview anxiety coaching, and delivers a comprehensive performance summary at session end.",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "agent_type": "json",
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "tools": false,
+        "knowledge_base": false
+      }
+    }
+  ]
+}
